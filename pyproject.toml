@@ -1,0 +1,34 @@
+[project]
+name = "soda-hugo-nbconvert"
+version = "2025.5.6.0"
+description = "convenient tools for intergrating jupyter notebooks with hugo"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.urls]
+Repository = "https://github.com/soda92/diskstat"
+
+[tool.uv]
+dev-dependencies = ["build>=1.2.2.post1", "hatchling>=1.27.0", "twine>=6.0.1"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.sdist]
+ignore-vcs = true
+packages = ["diskstat", "diskstat_api"]
+exclude = ["__pycache__", "*.pyc", "*.exe", "*.exe~", "*.syso"]
+
+[tool.hatch.build.targets.wheel]
+ignore-vcs = true
+packages = ["diskstat"]
+exclude = ["__pycache__", "*.pyc", "*.exe~", "*.syso"]
+
+[tool.hatch.build.hooks.custom]
+
+[project.scripts]
+diskstat = "diskstat.entry:main"
+diskstat-server = "diskstat.server:main"
+diskstat-console = "diskstat.disks:main_console"
