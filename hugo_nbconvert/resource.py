@@ -7,8 +7,8 @@ content = r"""
    "metadata": {},
    "source": [
     "---\n",
-    "date: {date}\n",
-    "title: {title}\n",
+    "date: '{date}'\n",
+    "title: '{title}'\n",
     "---"
    ]
   }
@@ -41,8 +41,8 @@ content_json = r"""
     "metadata": {},
     "source": [
         "---\n",
-        "date: {date}\n",
-        "title: {title}\n",
+        "date: '{date}'\n",
+        "title: '{title}'\n",
         "---"
     ]
 }"""
