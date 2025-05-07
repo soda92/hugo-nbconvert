@@ -1977,23 +1977,29 @@ wheels = [
 name = "soda-hugo-nbconvert"
 version = "2025.5.6.0"
 source = { editable = "." }
+dependencies = [
+    { name = "jupyter" },
+    { name = "nbconvert" },
+]
 
 [package.dev-dependencies]
 dev = [
     { name = "build" },
     { name = "hatchling" },
-    { name = "jupyter" },
     { name = "matplotlib" },
     { name = "twine" },
 ]
 
 [package.metadata]
+requires-dist = [
+    { name = "jupyter", specifier = ">=1.1.1" },
+    { name = "nbconvert", specifier = ">=7.16.6" },
+]
 
 [package.metadata.requires-dev]
 dev = [
     { name = "build", specifier = ">=1.2.2.post1" },
     { name = "hatchling", specifier = ">=1.27.0" },
-    { name = "jupyter", specifier = ">=1.1.1" },
     { name = "matplotlib", specifier = ">=3.10.1" },
     { name = "twine", specifier = ">=6.0.1" },
 ]

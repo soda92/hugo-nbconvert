@@ -13,5 +13,10 @@ def get_files() -> list[Path]:
 
     hugo_ipynbs = glob.glob("**/*.ipynb", recursive=True, root_dir=hugo_basedir)
 
-    hugo_ipynbs = list(map(hugo_basedir.joinpath, hugo_ipynbs))
+    hugo_ipynbs = list(
+        map(
+            hugo_basedir.joinpath,
+            filter(lambda x: not x.startswith("public"), hugo_ipynbs),
+        )
+    )
     return hugo_ipynbs

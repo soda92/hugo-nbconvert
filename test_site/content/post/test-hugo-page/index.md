@@ -9,9 +9,12 @@ import matplotlib.pyplot as plt
 ```
 
 
+{{< details summary="Input collapsed:" altSummary="Input expanded:" >}}
 ```python
 plt.plot([1,2,3], [1,2,3])
 ```
+{{< /details >}}
+
 
 
 
