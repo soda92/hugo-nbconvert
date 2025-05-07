@@ -4,10 +4,7 @@ version = "2025.5.7.0"
 description = "convenient tools for intergrating jupyter notebooks with hugo"
 readme = "README.md"
 requires-python = ">=3.11"
-dependencies = [
-    "jupyter>=1.1.1",
-    "nbconvert>=7.16.6",
-]
+dependencies = ["jupyter>=1.1.1", "nbconvert>=7.16.6"]
 
 [project.urls]
 Repository = "https://github.com/soda92/hugo-nbconvert"
@@ -38,4 +35,5 @@ exclude = ["__pycache__", "*.pyc", "*.exe~", "*.syso"]
 
 [project.scripts]
 hugo_nbconvert = "hugo_nbconvert.main:main"
-hugo_nbnew = "hugo_nbconvert.new:main"
+hugo_nbnew = "hugo_nbconvert.new:nbnew"
+hugo_new = "hugo_nbconvert.new:new_main"
