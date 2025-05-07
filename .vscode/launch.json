@@ -23,7 +23,7 @@
             }
         },
         {
-            "name": "hugo_nbnew",
+            "name": "hugo_fix",
             "type": "debugpy",
             "request": "launch",
             "module": "hugo_nbconvert",
@@ -31,7 +31,7 @@
                 "submodule": "hugo_fix"
             },
             "args": [
-                "tests/demo_fix.ipynb"
+                "tests/demo-fix.ipynb"
             ]
         }
     ]

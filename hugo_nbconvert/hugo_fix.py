@@ -26,15 +26,15 @@ def have_front_matter(file: Path):
     if file.suffix == ".ipynb":
         import json
 
-        c = json.loads(file.read_text(encoding="utf8"))
-        if not hasattr(c, "cells"):
+        c: dict = json.loads(file.read_text(encoding="utf8"))
+        if "cells" not in c.keys():
             return False
         if len(c["cells"]) == 0:
             return False
         if c["cells"][0]["cell_type"] != "markdown":
             return False
 
-        if not hasattr(c["cells"][0], "source"):
+        if "source" not in c["cells"][0].keys():
             return False
         first_cell_content = c["cells"][0]["source"]
         if not isinstance(first_cell_content, list) or len(first_cell_content) == 0:

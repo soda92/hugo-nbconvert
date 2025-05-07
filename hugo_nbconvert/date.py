@@ -1,10 +1,10 @@
-from datetime import datetime
+import datetime
 from pathlib import Path
 import subprocess
 
 
 def get_date() -> str:
-    return datetime.strftime(datetime.now(), "%Y-%m-%dT%H:%M:%S+08:00")
+    return datetime.datetime.strftime(datetime.now(), "%Y-%m-%dT%H:%M:%S+08:00")
 
 
 def get_oldest_git_date(file: Path) -> str:
