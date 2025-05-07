@@ -21,6 +21,15 @@
             "env": {
                 "submodule": "hugo_new"
             }
+        },
+        {
+            "name": "hugo_nbnew",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "hugo_nbconvert",
+            "env": {
+                "submodule": "hugo_new"
+            }
         }
     ]
 }

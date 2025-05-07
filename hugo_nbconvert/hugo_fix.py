@@ -3,6 +3,7 @@ from pathlib import Path
 import os
 import glob
 import shutil
+import json
 
 
 def convert_to_dir(file: Path):
@@ -21,8 +22,62 @@ def convert_to_dir(file: Path):
     shutil.move(file, new_path)
 
 
+def have_front_matter(file: Path):
+    if file.suffix == ".ipynb":
+        import json
+
+        c = json.loads(file.read_text(encoding="utf8"))
+        if not hasattr(c, "cells"):
+            return False
+        if len(c["cells"]) == 0:
+            return False
+        if c["cells"][0]["cell_type"] != "markdown":
+            return False
+
+        if not hasattr(c["cells"][0], "source"):
+            return False
+        first_cell_content = c["cells"][0]["source"]
+        if not isinstance(first_cell_content, list) or len(first_cell_content) == 0:
+            return False
+        if first_cell_content[0] != "---\n" or first_cell_content[0] != "+++\n":
+            return False
+
+        return True
+
+
 def fix_file(file: Path):
-    pass
+    if file.suffix == ".md":
+        content = file.read_text(encoding="utf8")
+        first_line = content.split("\n")[0]
+        # check if already have front matter
+        if first_line == "---" or first_line == "+++":
+            return
+        from .resource import content_md
+        from .tools import get_title_from_path
+        from .date import get_oldest_git_date
+
+        title = get_title_from_path(file)
+        date = get_oldest_git_date(file)
+
+        content1 = content_md.replace("{date}", date).replace("{title}", title)
+        file.write_text(content1 + content)
+
+    if file.suffix == ".ipynb":
+        if have_front_matter(file):
+            return
+
+        from .tools import get_title_from_path
+        from .date import get_oldest_git_date
+
+        title = get_title_from_path(file)
+        date = get_oldest_git_date(file)
+        from .resource import content_json
+
+        content1 = content_json.replace("{date}", date).replace("{title}", title)
+        content_obj = json.loads(content1)
+        file_obj = json.loads(file.read_text(encoding="utf8"))
+        file_obj["cells"].insert(0, content_obj)
+        file.write_text(encoding="utf8", data=json.dumps(file_obj, indent=2))
 
 
 def fix_file_glob(glob_str: str):
@@ -85,7 +140,7 @@ def fix_main():
 # main proc
 def main(args):
     if args.to_dir:
-        fix_file(args.target_file)
-        convert_to_dir(args.target_file)
+        fix_file(Path(args.target_file))
+        convert_to_dir(Path(args.target_file))
     else:
-        fix_file(args.target_file)
+        fix_file(Path(args.target_file))
