@@ -140,7 +140,7 @@ def fix_main():
 # main proc
 def main(args):
     if args.to_dir:
-        fix_file(Path(args.target_file))
-        convert_to_dir(Path(args.target_file))
+        fix_file_glob(args.target_file)
+        convert_to_dir_glob(args.target_file)
     else:
-        fix_file(Path(args.target_file))
+        fix_file_glob(args.target_file)
