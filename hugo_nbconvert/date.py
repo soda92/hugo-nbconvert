@@ -4,7 +4,7 @@ import subprocess
 
 
 def get_date() -> str:
-    return datetime.datetime.strftime(datetime.now(), "%Y-%m-%dT%H:%M:%S+08:00")
+    return datetime.datetime.strftime(datetime.datetime.now(), "%Y-%m-%dT%H:%M:%S+08:00")
 
 
 def get_oldest_git_date(file: Path) -> str:
