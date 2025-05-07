@@ -28,8 +28,11 @@
             "request": "launch",
             "module": "hugo_nbconvert",
             "env": {
-                "submodule": "hugo_new"
-            }
+                "submodule": "hugo_fix"
+            },
+            "args": [
+                "tests/demo_fix.ipynb"
+            ]
         }
     ]
 }
