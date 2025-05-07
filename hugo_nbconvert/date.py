@@ -13,7 +13,7 @@ def get_oldest_git_date(file: Path) -> str:
 
     datetimes = []
     for i in lines.split("\n"):
-        r = re.findall(r"[\^a-z0-9]{8} \((.*)\)", i)
+        r = re.findall(r"[\^a-z0-9]{8} .* \((.*[0-9]+-[0-9]+-[0-9]+[0-9:+ ]+)\)", i)
         if len(r) >= 1:
             datetimes.append(r[0])
 
@@ -24,7 +24,11 @@ def get_oldest_git_date(file: Path) -> str:
         time = results[2]
         timezone = results[3]
         real_date = " ".join([date, time, timezone])
-        real_date = datetime.datetime.strptime(real_date, "%Y-%m-%d %H:%M:%S %z")
+        try:
+            real_date = datetime.datetime.strptime(real_date, "%Y-%m-%d %H:%M:%S %z")
+        except Exception as e:
+            print(e)
+            breakpoint()
         real_dates.append(real_date)
         # print(real_date)
 
