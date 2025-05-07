@@ -11,12 +11,6 @@ content = r"""
     "title: {title}\n",
     "---"
    ]
-  },
-  {
-   "cell_type": "markdown",
-   "id": "8d067373",
-   "metadata": {},
-   "source": []
   }
  ],
  "metadata": {

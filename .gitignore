@@ -1,3 +1,11 @@
+# custom
+
+tests/my-other-page/index.md
+tests/my-other-page/index_files
+.hugo_build.lock
+index_files
+public
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

@@ -4,7 +4,7 @@ version = "2025.5.6.0"
 description = "convenient tools for intergrating jupyter notebooks with hugo"
 readme = "README.md"
 requires-python = ">=3.11"
-dependencies = []
+dependencies = ["jupyter>=1.1.1"]
 
 [project.urls]
 Repository = "https://github.com/soda92/hugo-nbconvert"
@@ -13,7 +13,7 @@ Repository = "https://github.com/soda92/hugo-nbconvert"
 dev-dependencies = [
     "build>=1.2.2.post1",
     "hatchling>=1.27.0",
-    "jupyter>=1.1.1",
+    "matplotlib>=3.10.1",
     "twine>=6.0.1",
 ]
 
