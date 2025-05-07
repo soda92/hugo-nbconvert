@@ -4,6 +4,16 @@ from pathlib import Path
 import os
 from hugo_nbconvert.resource import content
 
+"""usage:
+
+> hugo_nbnew ./content/post/a-demo-post
+> hugo_new --ipynb/-n ./content/post/a-demo-post
+create ipynb "a-demo-post/index.ipynb".
+
+> hugo_new ./content/post/a-demo-post.ipynb
+create ipynb "a-demo-post.ipynb".
+
+"""
 
 def main():
     parser = argparse.ArgumentParser()

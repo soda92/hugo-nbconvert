@@ -13,8 +13,9 @@ def main():
             ["jupyter", "nbconvert", "--config", conf_path, "--to", "markdown", i]
         )
         output_filepath = i.parent.joinpath("index.md")
-        postprocessor = CollapsePostprocessor(output_filepath)
-        postprocessor.process()
+        if output_filepath.exists():
+            postprocessor = CollapsePostprocessor(output_filepath)
+            postprocessor.process()
 
 
 if __name__ == "__main__":
