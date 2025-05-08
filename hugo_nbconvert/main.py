@@ -1,9 +1,8 @@
-import subprocess
-from hugo_nbconvert.glob_hugo_ipynb import get_files
+from .glob_hugo_ipynb import get_files
 from sodatools import Path, os
-from hugo_nbconvert.collapse_postprocessor import CollapsePostprocessor
 import argparse
 import multiprocessing
+from .markdown_convert import convert_proc
 
 
 def get_args():
@@ -33,16 +32,6 @@ def main():
             files.append(file_path)
 
     api_convert_main(files)
-
-
-def convert_proc(conf_path: Path, file: Path):
-    subprocess.run(
-        ["jupyter", "nbconvert", "--config", conf_path, "--to", "markdown", file]
-    )
-    output_filepath = file.with_suffix(".md")
-    if output_filepath.exists():
-        postprocessor = CollapsePostprocessor(output_filepath)
-        postprocessor.process()
 
 
 def api_convert_main(files: list[Path]):
