@@ -19,18 +19,37 @@ def get_config():
 
 def convert_proc(file: Path):
     CustomExporter = MarkdownExporter(config=get_config())
-    (body, res) = CustomExporter.from_file(file)
+    (body, resources) = CustomExporter.from_file(file)
+    if file.stem == "index":
+        resource_dir = file.parent.joinpath(file.stem + "_files")
+        if resource_dir.exists() and resource_dir.is_file():
+            resource_dir.unlink()
 
-    resource_dir = file.parent.joinpath(file.stem + "_files")
-    if resource_dir.exists() and resource_dir.is_file():
-        resource_dir.unlink()
+        md_text = body
+        if len(resources["outputs"]) >= 1:
+            resource_dir.mkdir(exist_ok=True)
+            for fn, content in resources["outputs"].items():
+                resource_dir.joinpath(fn).write_bytes(content)
+                md_text = md_text.replace(f"({fn})", f"({file.stem + '_files'}/{fn})")
+    else:
+        resource_dir = file.parent  # post
+        resource_dir = resource_dir.parent  # content
+        resource_dir = resource_dir.parent  # site
+        resource_dir = resource_dir.joinpath("assets")
 
-    md_text = body
-    if len(res["outputs"]) >= 1:
-        resource_dir.mkdir(exist_ok=True)
-        for fn, content in res["outputs"].items():
-            resource_dir.joinpath(fn).write_bytes(content)
-            md_text = md_text.replace(f"({fn})", f"({file.stem + '_files'}/{fn})")
+        if not resource_dir.exists():
+            print("fatal: cannot find assets directory")
+            exit(-1)
+
+        md_text = body
+        if len(resources["outputs"]) >= 1:
+            resource_dir.mkdir(exist_ok=True)
+            for fn, content in resources["outputs"].items():
+                new_file_name = file.stem + "-" + fn
+                resource_dir.joinpath(new_file_name).write_bytes(content)
+                md_text = md_text.replace(f"({fn})", f"({new_file_name})")
 
     md_text = post_process(md_text)
-    file.with_suffix(".md").write_text(md_text, encoding="utf8")
+    markdown_file = file.with_suffix(".md")
+    markdown_file = markdown_file.with_stem(markdown_file.stem + "-gen")
+    markdown_file.write_text(md_text, encoding="utf8")
