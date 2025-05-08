@@ -18,7 +18,7 @@ plt.plot(range(3), range(3))
 
 
     
-![png](index_files/output_1_1.png)
+![png](./index_files/output_1_1.png)
     
 
 

@@ -51,5 +51,5 @@ def convert_proc(file: Path):
 
     md_text = post_process(md_text)
     markdown_file = file.with_suffix(".md")
-    markdown_file = markdown_file.with_stem(markdown_file.stem + "-gen")
+    # markdown_file = markdown_file.with_stem(markdown_file.stem + "-gen")
     markdown_file.write_text(md_text, encoding="utf8")
