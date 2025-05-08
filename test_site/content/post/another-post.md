@@ -39,13 +39,13 @@ plt.plot(range(3), range(3))
 
 
 
-    [<matplotlib.lines.Line2D at 0x2a5fdcab390>]
+    [<matplotlib.lines.Line2D at 0x2a5ff0af610>]
 
 
 
 
     
-![png](another-post_files/another-post_4_1.png)
+![png](another-post-output_4_1.png)
     
 
 

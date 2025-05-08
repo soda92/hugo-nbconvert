@@ -25,6 +25,6 @@ plt.plot([1,2,3], [1,2,3])
 
 
     
-![png](index_files/index_2_1.png)
+![png](index_files/output_2_1.png)
     
 
