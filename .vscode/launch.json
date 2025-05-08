@@ -33,6 +33,15 @@
             "args": [
                 "tests/demo-fix.ipynb"
             ]
+        },
+        {
+            "name": "hugo_run",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "hugo_nbconvert",
+            "env": {
+                "submodule": "hugo_run"
+            },
         }
     ]
 }
