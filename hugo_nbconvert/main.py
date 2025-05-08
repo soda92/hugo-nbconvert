@@ -37,7 +37,7 @@ def main():
 def api_convert_main(files: list[Path]):
     processes = []
     for i in files:
-        p = multiprocessing.Process(target=convert_proc, args=(conf_path, i))
+        p = multiprocessing.Process(target=convert_proc, args=(i,))
         processes.append(p)
         p.start()
     for p in processes:

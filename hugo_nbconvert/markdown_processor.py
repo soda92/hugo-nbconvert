@@ -79,3 +79,23 @@ class CollapsePreprocessor(Preprocessor):
 
         nb.cells = grouped_cells
         return nb, resources
+
+
+def post_process(content: str) -> str:
+    # collapsed inputs/outputs
+    content = content.replace(
+        "```python\n{{< detailsInput >}}",
+        '{{< details summary="Input collapsed:" altSummary="Input expanded:" >}}',
+    )
+    content = content.replace(
+        "{{< /detailsInput >}}\n```", "{{< /details >}}\n"
+    )
+    content = content.replace(
+        "    {{< detailsOutput >}}",
+        '{{< details summary="Output collapsed:" altSummary="Output expanded:" >}}',
+    )
+    content = content.replace(
+        "    {{< /detailsOutput >}}", "{{< /details >}}\n"
+    )
+
+    return content
