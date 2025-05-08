@@ -540,6 +540,23 @@ wheels = [
 ]
 
 [[package]]
+name = "hugo"
+version = "0.147.2"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/0f/27/c54b294ce837d1f26441d2cb4860d29bf2ac41f80ffe403335afe7a40ffa/hugo-0.147.2.tar.gz", hash = "sha256:ed79de177fc2512d2c2ecafb0ac10cb1044c88a0e310bb89e239e0d2753c02d7", size = 28487, upload_time = "2025-05-06T13:16:34.611Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/1c/25/9ac809493101bc7b30446c91512bb897682ccef81553f0e57159eeb1f29e/hugo-0.147.2-py3-none-macosx_10_13_x86_64.whl", hash = "sha256:56b88caeceac06e48b975a822f7e1f42fa97464712afc4854cec7f1f0ad1f9ad", size = 24330342, upload_time = "2025-05-06T13:16:04.371Z" },
+    { url = "https://files.pythonhosted.org/packages/ec/8c/0b0c3c917e2e5b5567ec92eea1a16052107906e5b175e069df326825ffca/hugo-0.147.2-py3-none-macosx_11_0_arm64.whl", hash = "sha256:d8064a123185eef69881d3d1a5523f24838b20cc3d49c36b7191b4aec65888fb", size = 22899501, upload_time = "2025-05-06T13:16:08.12Z" },
+    { url = "https://files.pythonhosted.org/packages/74/96/6bca9e4ee73ba4fbabcc693ee236c4d9e5143a47084c4a8f1f01909a925e/hugo-0.147.2-py3-none-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:e229f652557b716572121e847d0f2e0e8264f392d11122112eb466081740724d", size = 22177260, upload_time = "2025-05-06T13:16:11.118Z" },
+    { url = "https://files.pythonhosted.org/packages/a8/7c/c4be856fe03b4024d7181afacfcf74c31d0dfb08a68969151ecc10aec600/hugo-0.147.2-py3-none-manylinux_2_17_ppc64le.manylinux2014_ppc64le.whl", hash = "sha256:507f64bb32c98fb282cc2c9a8a7416553575661e3ab736d6a273f71f495915cd", size = 21309578, upload_time = "2025-05-06T13:16:16.566Z" },
+    { url = "https://files.pythonhosted.org/packages/c4/7a/902a647b3c24e4b0272988692a58e120254e47ab3253074aecab9f9fb128/hugo-0.147.2-py3-none-manylinux_2_17_s390x.manylinux2014_s390x.whl", hash = "sha256:788d5437b9934bef11d2b2826c0689f321814262b6bc02b7afed911f30561a3f", size = 23496737, upload_time = "2025-05-06T13:16:19.562Z" },
+    { url = "https://files.pythonhosted.org/packages/10/77/c0221967297603033620716ee424bab8bd3f5cb1ba65d8f41f1a0e1d1e86/hugo-0.147.2-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:3c9103afc3f5402cca0066ec13a30baf98cd1e40917ab6f0340c95622074ec35", size = 24207857, upload_time = "2025-05-06T13:16:22.694Z" },
+    { url = "https://files.pythonhosted.org/packages/01/91/eb459671ff59e197e401b5e0b45db10e1b004086bb7f8b7083039091c2ee/hugo-0.147.2-py3-none-win32.whl", hash = "sha256:048ee0701242829c3d314b0d04161065751b2460f153b96cedff930601eb84fb", size = 22871337, upload_time = "2025-05-06T13:16:26.251Z" },
+    { url = "https://files.pythonhosted.org/packages/1c/3f/2501095cf93b158ea42dfeed9f343c461306df54e6394273e37a34f9e190/hugo-0.147.2-py3-none-win_amd64.whl", hash = "sha256:1a04308fc1b2e4a5fd5048f99584784e9277f3ab2f49d1575d627291ae53955c", size = 24964773, upload_time = "2025-05-06T13:16:29.449Z" },
+    { url = "https://files.pythonhosted.org/packages/61/5f/3e5450cebed9782afd84c3135cd07d8506a2b0c059fba27e13a80e890daa/hugo-0.147.2-py3-none-win_arm64.whl", hash = "sha256:951a72194edba913c66ba0e7b4c957049be1b5c2b41648848141b928fb01c502", size = 22415918, upload_time = "2025-05-06T13:16:32.412Z" },
+]
+
+[[package]]
 name = "id"
 version = "1.5.0"
 source = { registry = "https://pypi.org/simple" }
@@ -1975,11 +1992,13 @@ wheels = [
 
 [[package]]
 name = "soda-hugo-nbconvert"
-version = "2025.5.7.0"
+version = "2025.5.8.0"
 source = { editable = "." }
 dependencies = [
+    { name = "hugo" },
     { name = "jupyter" },
     { name = "nbconvert" },
+    { name = "sodatools" },
 ]
 
 [package.dev-dependencies]
@@ -1992,8 +2011,10 @@ dev = [
 
 [package.metadata]
 requires-dist = [
+    { name = "hugo", specifier = ">=0.147.2" },
     { name = "jupyter", specifier = ">=1.1.1" },
     { name = "nbconvert", specifier = ">=7.16.6" },
+    { name = "sodatools", specifier = ">=2025.2.16.0" },
 ]
 
 [package.metadata.requires-dev]
@@ -2002,6 +2023,15 @@ dev = [
     { name = "hatchling", specifier = ">=1.27.0" },
     { name = "matplotlib", specifier = ">=3.10.1" },
     { name = "twine", specifier = ">=6.0.1" },
+]
+
+[[package]]
+name = "sodatools"
+version = "2025.2.16.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/20/18/0b1ed8f69f350fd63613c653250c42c292f730b50cf57b7a072e37700834/sodatools-2025.2.16.0.tar.gz", hash = "sha256:297eb126d9f93b440e7e5fc5c86593199e56eef7b89cd0897dfbbe931a94ff0b", size = 1014, upload_time = "2025-02-16T01:00:05.392Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/f3/d5/7ff84b93545cb70dab66ec1cc1cf590c826abf113a78bbe81c76dc120d83/sodatools-2025.2.16.0-py3-none-any.whl", hash = "sha256:17fdd6e477ebc8488851d88af66c1a49bcd83efc732e17566598efe7001afe82", size = 1416, upload_time = "2025-02-16T01:00:04.181Z" },
 ]
 
 [[package]]
