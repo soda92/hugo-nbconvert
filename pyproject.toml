@@ -1,6 +1,6 @@
 [project]
 name = "soda-hugo-nbconvert"
-version = "2025.5.8.0"
+version = "2025.5.8.1"
 description = "convenient tools for intergrating jupyter notebooks with hugo"
 readme = "README.md"
 requires-python = ">=3.11"
