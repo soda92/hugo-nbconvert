@@ -6,7 +6,9 @@ from .markdown_convert import convert_proc
 
 
 def get_args():
-    parser = argparse.ArgumentParser(usage="convert ipynb to markdown posts")
+    parser = argparse.ArgumentParser(usage="""convert ipynb to markdown posts.
+supported tags: hide_cell, hide_input, hide_output, collapse_cell, collapse_input, collapse_output.
+""")
     parser.add_argument(
         "file_path",
         type=str,

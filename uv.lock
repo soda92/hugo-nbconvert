@@ -1992,7 +1992,7 @@ wheels = [
 
 [[package]]
 name = "soda-hugo-nbconvert"
-version = "2025.5.8.0"
+version = "2025.5.11.0"
 source = { editable = "." }
 dependencies = [
     { name = "hugo" },
