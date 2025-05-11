@@ -1,6 +1,6 @@
 from .main import main as nbconvert
 from .new import new_main
-from .hugo_fix import fix_main
+from .hugo_fix import fix_main, to_dir_main
 from .run import run
 import os
 
@@ -14,3 +14,5 @@ elif submodule == "hugo_fix":
     fix_main()
 elif submodule == "hugo_run":
     run()
+elif submodule == "hugo_todir":
+    to_dir_main()

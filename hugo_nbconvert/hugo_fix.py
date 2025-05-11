@@ -39,7 +39,7 @@ def have_front_matter(file: Path):
         first_cell_content = c["cells"][0]["source"]
         if not isinstance(first_cell_content, list) or len(first_cell_content) == 0:
             return False
-        if first_cell_content[0] != "---\n" or first_cell_content[0] != "+++\n":
+        if first_cell_content[0] != "---\n" and first_cell_content[0] != "+++\n":
             return False
 
         return True

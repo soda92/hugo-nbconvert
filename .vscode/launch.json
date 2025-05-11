@@ -26,6 +26,18 @@
             ]
         },
         {
+            "name": "hugo_todir_test1",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "hugo_nbconvert",
+            "env": {
+                "submodule": "hugo_todir"
+            },
+            "args": [
+                "C:/src/biology/content/docs/test-dna-feature-viewer.ipynb"
+            ]
+        },
+        {
             "name": "hugo_nbnew",
             "type": "debugpy",
             "request": "launch",

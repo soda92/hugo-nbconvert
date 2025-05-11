@@ -47,7 +47,7 @@ def convert_proc(file: Path):
             for fn, content in resources["outputs"].items():
                 new_file_name = file.stem + "-" + fn
                 resource_dir.joinpath(new_file_name).write_bytes(content)
-                md_text = md_text.replace(f"({fn})", f"({new_file_name})")
+                md_text = md_text.replace(f"({fn})", f"(/{new_file_name})")
 
     md_text = post_process(md_text)
     markdown_file = file.with_suffix(".md")
