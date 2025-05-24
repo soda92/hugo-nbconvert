@@ -55,7 +55,7 @@
                 "submodule": "hugo_fix"
             },
             "args": [
-                "tests/demo-fix.ipynb"
+                "C:/src/biology/content/blog/gene-download.ipynb"
             ]
         },
         {

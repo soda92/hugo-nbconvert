@@ -8,6 +8,7 @@ dependencies = [
     "hugo>=0.147.2",
     "jupyter>=1.1.1",
     "nbconvert>=7.16.6",
+    "pytest>=8.3.5",
     "sodatools>=2025.2.16.0",
     "watchdog>=6.0.0",
 ]
