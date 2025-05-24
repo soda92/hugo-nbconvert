@@ -9,6 +9,8 @@ def get_date() -> str:
 
 def get_oldest_git_date(file: Path) -> str:
     lines = subprocess.getoutput(" ".join(["git", "blame", str(file)]))
+    if 'fatal' in lines:
+        return get_date()
     import re
 
     datetimes = []
